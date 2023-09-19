@@ -61,7 +61,7 @@ if st.sidebar.button("Predict!"):
             Distance range: {} - {} nm\n
              """.format(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']),min(df['distance']),max(df['distance'])))
     # Load the model
-    model = joblib.load('model.pkl')
+    model = joblib.load('/mount/src/app/model.pkl')
 
     # Print the type and structure of the loaded object
 
