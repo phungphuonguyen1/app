@@ -4,3 +4,4 @@ matplotlib==3.5.3
 langchain
 joblib
 os
+scikit-learn
