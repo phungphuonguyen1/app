@@ -21,8 +21,6 @@ def user_input_features():
     d=st.sidebar.slider('Diameter of nanoparticles: ',1,10,4)
     phi=st.sidebar.slider('Number of particles: ',0.001,0.1,0.02)
     cLength=st.sidebar.slider('Length of polymer chain: ',5,100,20)
-    #mats= st.sidebar.selectbox('Material',materiallist)
-    #radi=st.sidebar.slider('Radius',20,100,30)
     st.sidebar.subheader('Distance Range')
     distance_str_min = st.sidebar.text_input('Minimum distance in nm: ','0.075')
     distance_str_width_range = st.sidebar.text_input('Width range in nm: ','150')
