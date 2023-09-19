@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 import base64
 import joblib
 from PIL import Image
-import os
 import sklearn
 print("Current working directory:", os.getcwd())
 st.write(os.getcwd())
