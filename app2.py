@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import base64
 import joblib
 from PIL import Image
+import os
+print("Current working directory:", os.getcwd())
 
 
 st.sidebar.title("Input parameters")
