@@ -19,7 +19,7 @@ def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
     d=st.sidebar.slider('Diameter of nanoparticles: ',1,10,4)
-    phi=st.sidebar.slider('Number of particles: ',0.001,0.01,0.002)
+    phi=st.sidebar.slider('Number of particles: ',0.001,0.1,0.02)
     cLength=st.sidebar.slider('Length of polymer chain: ',5,100,20)
     #mats= st.sidebar.selectbox('Material',materiallist)
     #radi=st.sidebar.slider('Radius',20,100,30)
