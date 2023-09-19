@@ -5,3 +5,4 @@ langchain
 joblib
 os
 scikit-learn
+sklearn
