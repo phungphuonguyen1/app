@@ -9,6 +9,10 @@ from PIL import Image
 import os
 print("Current working directory:", os.getcwd())
 st.write(os.getcwd())
+try:
+    model = joblib.load(/mount/src/app/model.pkl)
+except Exception as e:
+    st.error(f"An error occurred while loading the model: {e}")
 
 st.sidebar.title("Input parameters")
 
