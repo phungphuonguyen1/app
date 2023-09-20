@@ -13,9 +13,9 @@ except Exception as e:
     st.error(f"An error occurred while loading the model: {e}")
 with st.sidebar:
     st.title("Input parameters")
-    st.info("This is the markdown")
+    st.info("Please enter inputs for the caculation.")
 #st.sidebar.title("Input parameters")
-st.text_area("Text to analyze")
+#st.text_area("Text to analyze")
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
