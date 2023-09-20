@@ -7,6 +7,12 @@ import base64
 import joblib
 from PIL import Image
 import sklearn
+import spacy
+from spacy import displacy
+
+SPACY_MODEL_NAMES = ["en_blackstone_proto"]
+HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef; border-radius: 0.25rem; padding: 1rem; margin-bottom: 2.5rem">{}</div>"""
+
 try:
     model = joblib.load("/mount/src/app/model.pkl")
 except Exception as e:
