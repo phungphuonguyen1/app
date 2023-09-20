@@ -13,7 +13,7 @@ except Exception as e:
     st.error(f"An error occurred while loading the model: {e}")
 with st.sidebar:
     st.title("Input parameters")
-    st.markdown("This is the markdown")
+    st.info("This is the markdown")
 #st.sidebar.title("Input parameters")
 
 def user_input_features():
