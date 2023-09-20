@@ -11,10 +11,11 @@ try:
     model = joblib.load("/mount/src/app/model.pkl")
 except Exception as e:
     st.error(f"An error occurred while loading the model: {e}")
+with st.sidebar:
+    st.title("Input parameters")
+    st.markdown("This is the markdown")
+#st.sidebar.title("Input parameters")
 
-st.sidebar.title("Input parameters")
-
-#'Po_NP', 'NP_NP', 'D_aim', 'Phi', 'Chain length', 'distance', 'function'
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
