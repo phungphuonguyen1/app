@@ -9,9 +9,10 @@ from PIL import Image
 import sklearn
 import spacy
 from spacy import displacy
+import dash
+from dash import Dash, html, dcc
 
-SPACY_MODEL_NAMES = ["en_blackstone_proto"]
-HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef; border-radius: 0.25rem; padding: 1rem; margin-bottom: 2.5rem">{}</div>"""
+app = Dash(__name__)
 
 try:
     model = joblib.load("/mount/src/app/model.pkl")
@@ -20,8 +21,48 @@ except Exception as e:
 with st.sidebar:
     st.title("Input parameters")
     st.info("Please enter inputs for the caculation.")
-#st.sidebar.title("Input parameters")
-#st.text_area("Text to analyze")
+st.sidebar.title("Input parameters")
+st.sidebar.info("Please enter inputs for the calculation.")
+
+app.layout = html.Div(children=[
+    html.H1(children="DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION"),
+    html.H2(children="Problem description"),
+    html.Img(src="polymer_nanoparticle.jpg", alt="Polymer nanoparticle"),
+    html.Button("Predict!", id="predict-button"),  # Changed to a button element
+    html.Div(id="prediction-output")  # Output container for prediction results
+])
+
+# Callback to update prediction when the "Predict!" button is clicked
+@app.callback(
+    dash.dependencies.Output("prediction-output", "children"),
+    [dash.dependencies.Input("predict-button", "n_clicks")]
+)
+def update_prediction(n_clicks):
+    if n_clicks is None:
+        return None
+    
+    # Get user input features
+    df = user_input_features()
+    
+    # Load the model
+    model = joblib.load('/mount/src/app/model.pkl')
+
+    # Predict
+    predictions1 = model.predict(df)
+
+    # Create and display the prediction plot
+    fig, ax = plt.subplots()
+    ax.scatter(df['distance'], predictions1)
+    ax.set_xlabel('distance')
+    ax.set_ylabel('density')
+    ax.set_title('Prediction')
+
+    # Display the plot in Dash
+    return dcc.Graph(
+        id='example-graph',
+        figure={'data': [{'x': df['distance'], 'y': predictions1, 'type': 'scatter'}]}
+    )
+
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
@@ -45,7 +86,7 @@ def user_input_features():
     return features
 df = user_input_features()
  
-st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
+'''st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
 st.header("Problem description")
 st.write("""Polymer nanocomposites (PNC) offer a broad range of properties that are intricately 
          connected to the spatial distribution of nanoparticles (NPs) in polymer matrices. 
@@ -85,8 +126,10 @@ if st.sidebar.button("Predict!"):
 
     # Display the plot in Streamlit
     st.pyplot(fig)
-
-    # -- Allow data download
+'''
+if __name__ == '__main__':
+    app.run_server(debug=True)
+'''# -- Allow data download
     download = df
     df = pd.DataFrame(download)
     csv = df.to_csv(index=False)
@@ -94,3 +137,4 @@ if st.sidebar.button("Predict!"):
     fn =  str(max(df['Po_NP']))+' - ' +str(max(df['NP_NP']))+str(max(df['D_aim']))+str(max(df['Phi']))+str(max(df['Chain length']))+' - '+str(min(df['distance']))+'/'+str(max(df['distance'])) + '.csv'
     href = f'<a href="data:file/csv;base64,{b64}" download="{fn}">Download Data as CSV File</a>'
     st.markdown(href, unsafe_allow_html=True)
+    '''
