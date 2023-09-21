@@ -1,5 +1,5 @@
 import dash
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc, Input, Output, State
 import pandas as pd
 import numpy as np
 import joblib
@@ -16,7 +16,7 @@ app.layout = html.Div(children=[
     html.H1(children="DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION"),
     html.H2(children="Problem description"),
     html.Img(src="polymer_nanoparticle.jpg", alt="Polymer nanoparticle"),
-    dcc.Sidebar(children=[
+    html.Div(className='sidebar', children=[
         html.H3("Input parameters"),
         html.Label("Interaction between polymers and nanoparticles:"),
         dcc.Slider(id="ponp-slider", min=0.0, max=2.5, step=0.01, value=0.4),
