@@ -37,24 +37,6 @@ def user_input_features():
     #features=data
     return features
 
-def draw_all(
-    key,
-    plot=False,
-):
-    st.write(
-        """
-        # Example Widgets
-        
-        These widgets don't do anything. But look at all the new colors they got 👀 
-    
-        ```python
-        # First some code.
-        streamlit = "cool"
-        theming = "fantastic"
-        both = "💥"
-        ```
-        """
-    )
 
 #try:
     #model = joblib.load("/mount/src/app/model.pkl")
@@ -63,7 +45,6 @@ def draw_all(
 with st.sidebar:
     st.title("Input parameters")
     st.info("Please enter inputs for the caculation.")
-    draw_all("sidebar")
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
@@ -80,6 +61,13 @@ st.image("https://editor.analyticsvidhya.com/uploads/210362021-07-18%20(2).png",
 st.write("For more information, please read this article:  [nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix](https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth)")
 if st.sidebar.button("Predict!"):
     st.subheader('User input parameter')
+    col1, col2, col3,col4,col5 = st.columns(4)
+    col1.metric("Interaction: polymer-NP", "{}".format(max(df['Po_NP'])))
+    col2.metric("Interaction: NP-NP", "{}".format(max(df['NP_NP'])))
+    col3.metric("Diameter of NP", "{}".format(max(df['D_aim'])))
+    col4.metric("Number of NP", "{}".format(max(df['Phi'])))
+    col5.metric("Length of polymer chain", "{}".format(max(df['Chain length'])))
+    st.metric("Distance range: ", "From {} nm to {} nm".format(min(df['distance']),max(df['distance'])))
     st.write("""
             Interaction between polymers and nanoparticles: {}\n
             Interaction between nanoparticles and nanoparticles: {}\n
