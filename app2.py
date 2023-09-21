@@ -62,8 +62,11 @@ def update_prediction(n_clicks):
         figure={'data': [{'x': df['distance'], 'y': predictions1, 'type': 'scatter'}]}
     )
 if __name__ == '__main__':
-    app.run_server(debug= True, port= 37648)
-
+    available_port = find_available_port(1,65536)
+    if available_port is not None:
+        app.run_server(debug=True, port=available_port)
+    else:
+        print("No available port found in the specified range.")
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
