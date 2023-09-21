@@ -27,7 +27,7 @@ app.layout = html.Div(children=[
     html.H1(children="DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION"),
     html.H2(children="Problem description")
     #html.Div(children='''Dash: A web application framework for your data.'''),
-    html.Img(src="polymer_nanoparticle.jpg", alt="Polymer nanoparticle"),
+    #html.Img(src="polymer_nanoparticle.jpg", alt="Polymer nanoparticle"),
     if st.sidebar.button("Predict!"):
         st.subheader('User input parameter')
         st.write("""
