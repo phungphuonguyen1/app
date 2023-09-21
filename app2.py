@@ -8,15 +8,6 @@ import joblib
 from PIL import Image
 import sklearn
 
-try:
-    model = joblib.load("/mount/src/app/model.pkl")
-except Exception as e:
-    st.error(f"An error occurred while loading the model: {e}")
-with st.sidebar:
-    st.title("Input parameters")
-    st.info("Please enter inputs for the caculation.")
-#st.sidebar.title("Input parameters")
-#st.text_area("Text to analyze")
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
@@ -38,6 +29,15 @@ def user_input_features():
     features.columns = ['Po_NP','NP_NP','D_aim','Phi','Chain length','distance']
     #features=data
     return features
+    
+#try:
+    #model = joblib.load("/mount/src/app/model.pkl")
+#except Exception as e:
+    #st.error(f"An error occurred while loading the model: {e}")
+with st.sidebar:
+    st.title("Input parameters")
+    st.info("Please enter inputs for the caculation.")
+    st.write("wha\n what is this")
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
