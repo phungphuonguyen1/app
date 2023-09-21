@@ -49,15 +49,6 @@ def draw_all(
         """
     )
 
-    st.checkbox("Is this cool or what?", key=key)
-    st.radio(
-        "How many balloons?",
-        ["1 balloon 🎈", "2 balloons 🎈🎈", "3 balloons 🎈🎈🎈"],
-        key=key,
-    )
-    st.button("🤡 Click me", key=key)
-
-
 #try:
     #model = joblib.load("/mount/src/app/model.pkl")
 #except Exception as e:
@@ -65,7 +56,7 @@ def draw_all(
 with st.sidebar:
     st.title("Input parameters")
     st.info("Please enter inputs for the caculation.")
-    draw_all("sidebar_content")
+    draw_all("sidebar")
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
