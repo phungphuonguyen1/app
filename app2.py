@@ -10,7 +10,7 @@ import sklearn
 import spacy
 from spacy import displacy
 from dash import Dash, html, dcc
-
+import dash
 #SPACY_MODEL_NAMES = ["en_blackstone_proto"]
 #HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef; border-radius: 0.25rem; padding: 1rem; margin-bottom: 2.5rem">{}</div>"""
 app = Dash(__name__)
