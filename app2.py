@@ -61,7 +61,7 @@ st.image("https://editor.analyticsvidhya.com/uploads/210362021-07-18%20(2).png",
 st.write("For more information, please read this article:  [nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix](https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth)")
 if st.sidebar.button("Predict!"):
     st.subheader('User input parameter')
-    col1, col2, col3,col4,col5 = st.columns(4)
+    col1, col2, col3,col4,col5 = st.columns(5)
     col1.metric("Interaction: polymer-NP", "{}".format(max(df['Po_NP'])))
     col2.metric("Interaction: NP-NP", "{}".format(max(df['NP_NP'])))
     col3.metric("Diameter of NP", "{}".format(max(df['D_aim'])))
