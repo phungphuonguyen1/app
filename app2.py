@@ -62,7 +62,7 @@ def update_prediction(n_clicks):
         figure={'data': [{'x': df['distance'], 'y': predictions1, 'type': 'scatter'}]}
     )
 if __name__ == '__main__':
-    app.run(debug=False, port= 0)
+    app.run(debug=False, port= 9000)
 
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
