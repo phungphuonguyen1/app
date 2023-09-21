@@ -65,7 +65,7 @@ def draw_all(
 with st.sidebar:
     st.title("Input parameters")
     st.info("Please enter inputs for the caculation.")
-    draw_all("sidebar")
+    draw_all("sidebar_content")
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
