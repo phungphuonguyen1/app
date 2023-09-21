@@ -7,11 +7,6 @@ import matplotlib.pyplot as plt
 
 app = Dash(__name__)
 
-try:
-    model = joblib.load("/mount/src/app/model.pkl")
-except Exception as e:
-    print(f"An error occurred while loading the model: {e}")
-
 app.layout = html.Div(children=[
     html.H1(children="DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION"),
     html.H2(children="Problem description"),
