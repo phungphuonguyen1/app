@@ -9,10 +9,11 @@ from PIL import Image
 import sklearn
 import spacy
 from spacy import displacy
+from dash import Dash, html, dcc
 
-SPACY_MODEL_NAMES = ["en_blackstone_proto"]
-HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef; border-radius: 0.25rem; padding: 1rem; margin-bottom: 2.5rem">{}</div>"""
-
+#SPACY_MODEL_NAMES = ["en_blackstone_proto"]
+#HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef; border-radius: 0.25rem; padding: 1rem; margin-bottom: 2.5rem">{}</div>"""
+app = Dash(__name__)
 try:
     model = joblib.load("/mount/src/app/model.pkl")
 except Exception as e:
@@ -20,8 +21,50 @@ except Exception as e:
 with st.sidebar:
     st.title("Input parameters")
     st.info("Please enter inputs for the caculation.")
-#st.sidebar.title("Input parameters")
 #st.text_area("Text to analyze")
+
+app.layout = html.Div(children=[
+    html.H1(children="DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION"),
+    html.H2(children="Problem description")
+    #html.Div(children='''Dash: A web application framework for your data.'''),
+    html.Img(src="polymer_nanoparticle.jpg", alt="Polymer nanoparticle"),
+    if st.sidebar.button("Predict!"):
+        st.subheader('User input parameter')
+        st.write("""
+            Interaction between polymers and nanoparticles: {}\n
+            Interaction between nanoparticles and nanoparticles: {}\n
+            Diameter of nanoparticles: {}\n
+            Number of particle: {}\n
+            Length of polymer chain: {}\n
+            Distance range: {} - {} nm\n
+             """.format(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']),min(df['distance']),max(df['distance'])))
+        # Load the model
+        model = joblib.load('/mount/src/app/model.pkl')
+
+        # Print the type and structure of the loaded object
+
+        predictions1=model.predict(df)
+        st.write('max predicts: ',max(predictions1))
+        st.write('min predicts: ',min(predictions1))
+        st.subheader('Prediction')
+    
+        fig, ax = plt.subplots()
+        ax.scatter(df['distance'],predictions1)
+        ax.set_xlabel('distance')
+        ax.set_ylabel('density')
+        ax.set_title('Prediction')
+
+        # Display the plot in Streamlit
+        st.pyplot(fig)
+        dcc.Graph(
+            id='example-graph',
+            figure=fig
+    )
+])
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
@@ -45,7 +88,7 @@ def user_input_features():
     return features
 df = user_input_features()
  
-st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
+#st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
 st.header("Problem description")
 st.write("""Polymer nanocomposites (PNC) offer a broad range of properties that are intricately 
          connected to the spatial distribution of nanoparticles (NPs) in polymer matrices. 
