@@ -9,7 +9,8 @@ from PIL import Image
 import sklearn
 
 with open('style.css') as f:
-    st.markdown(f'<style>(f.read())</style>',unsafe_allow_html=True)
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
