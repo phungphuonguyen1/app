@@ -29,7 +29,35 @@ def user_input_features():
     features.columns = ['Po_NP','NP_NP','D_aim','Phi','Chain length','distance']
     #features=data
     return features
+
+def draw_all(
+    key,
+    plot=False,
+):
+    st.write(
+        """
+        # Example Widgets
+        
+        These widgets don't do anything. But look at all the new colors they got 👀 
     
+        ```python
+        # First some code.
+        streamlit = "cool"
+        theming = "fantastic"
+        both = "💥"
+        ```
+        """
+    )
+
+    st.checkbox("Is this cool or what?", key=key)
+    st.radio(
+        "How many balloons?",
+        ["1 balloon 🎈", "2 balloons 🎈🎈", "3 balloons 🎈🎈🎈"],
+        key=key,
+    )
+    st.button("🤡 Click me", key=key)
+
+
 #try:
     #model = joblib.load("/mount/src/app/model.pkl")
 #except Exception as e:
@@ -37,7 +65,7 @@ def user_input_features():
 with st.sidebar:
     st.title("Input parameters")
     st.info("Please enter inputs for the caculation.")
-    st.write("wha\n what is this")
+    draw_all("sidebar")
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
