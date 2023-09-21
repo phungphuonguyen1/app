@@ -25,45 +25,44 @@ with st.sidebar:
 
 app.layout = html.Div(children=[
     html.H1(children="DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION"),
-    html.H2(children="Problem description")
-    #html.Div(children='''Dash: A web application framework for your data.'''),
-    #html.Img(src="polymer_nanoparticle.jpg", alt="Polymer nanoparticle"),
-    if st.sidebar.button("Predict!"):
-        st.subheader('User input parameter')
-        st.write("""
-            Interaction between polymers and nanoparticles: {}\n
-            Interaction between nanoparticles and nanoparticles: {}\n
-            Diameter of nanoparticles: {}\n
-            Number of particle: {}\n
-            Length of polymer chain: {}\n
-            Distance range: {} - {} nm\n
-             """.format(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']),min(df['distance']),max(df['distance'])))
-        # Load the model
-        model = joblib.load('/mount/src/app/model.pkl')
-
-        # Print the type and structure of the loaded object
-
-        predictions1=model.predict(df)
-        st.write('max predicts: ',max(predictions1))
-        st.write('min predicts: ',min(predictions1))
-        st.subheader('Prediction')
-    
-        fig, ax = plt.subplots()
-        ax.scatter(df['distance'],predictions1)
-        ax.set_xlabel('distance')
-        ax.set_ylabel('density')
-        ax.set_title('Prediction')
-
-        # Display the plot in Streamlit
-        st.pyplot(fig)
-        dcc.Graph(
-            id='example-graph',
-            figure=fig
-    )
+    html.H2(children="Problem description"),
+    html.Img(src="polymer_nanoparticle.jpg", alt="Polymer nanoparticle"),
+    html.Button("Predict!", id="predict-button"),  # Changed to a button element
+    html.Div(id="prediction-output")  # Output container for prediction results
 ])
 
+# Callback to update prediction when the "Predict!" button is clicked
+@app.callback(
+    dash.dependencies.Output("prediction-output", "children"),
+    [dash.dependencies.Input("predict-button", "n_clicks")]
+)
+def update_prediction(n_clicks):
+    if n_clicks is None:
+        return None
+    
+    # Get user input features
+    df = user_input_features()
+    
+    # Load the model
+    model = joblib.load('/mount/src/app/model.pkl')
+
+    # Predict
+    predictions1 = model.predict(df)
+
+    # Create and display the prediction plot
+    fig, ax = plt.subplots()
+    ax.scatter(df['distance'], predictions1)
+    ax.set_xlabel('distance')
+    ax.set_ylabel('density')
+    ax.set_title('Prediction')
+
+    # Display the plot in Dash
+    return dcc.Graph(
+        id='example-graph',
+        figure={'data': [{'x': df['distance'], 'y': predictions1, 'type': 'scatter'}]}
+    )
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run_server(debug=True)
 
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
@@ -88,7 +87,7 @@ def user_input_features():
     return features
 df = user_input_features()
  
-#st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
+'''#st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
 st.header("Problem description")
 st.write("""Polymer nanocomposites (PNC) offer a broad range of properties that are intricately 
          connected to the spatial distribution of nanoparticles (NPs) in polymer matrices. 
@@ -128,7 +127,7 @@ if st.sidebar.button("Predict!"):
 
     # Display the plot in Streamlit
     st.pyplot(fig)
-
+'''
     # -- Allow data download
     download = df
     df = pd.DataFrame(download)
