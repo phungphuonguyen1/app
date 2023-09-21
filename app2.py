@@ -1,140 +1,102 @@
-import streamlit as st
-from langchain.llms import OpenAI
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import base64
-import joblib
-from PIL import Image
-import sklearn
-import spacy
-from spacy import displacy
 import dash
-from dash import Dash, html, dcc
+from dash import Dash, html, dcc, Input, Output
+import pandas as pd
+import numpy as np
+import joblib
+import matplotlib.pyplot as plt
 
 app = Dash(__name__)
 
 try:
     model = joblib.load("/mount/src/app/model.pkl")
 except Exception as e:
-    st.error(f"An error occurred while loading the model: {e}")
-with st.sidebar:
-    st.title("Input parameters")
-    st.info("Please enter inputs for the caculation.")
-st.sidebar.title("Input parameters")
-st.sidebar.info("Please enter inputs for the calculation.")
+    print(f"An error occurred while loading the model: {e}")
 
 app.layout = html.Div(children=[
     html.H1(children="DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION"),
     html.H2(children="Problem description"),
     html.Img(src="polymer_nanoparticle.jpg", alt="Polymer nanoparticle"),
-    html.Button("Predict!", id="predict-button"),  # Changed to a button element
+    dcc.Sidebar(children=[
+        html.H3("Input parameters"),
+        html.Label("Interaction between polymers and nanoparticles:"),
+        dcc.Slider(id="ponp-slider", min=0.0, max=2.5, step=0.01, value=0.4),
+        html.Label("Interaction between nanoparticles and nanoparticles:"),
+        dcc.Slider(id="npnp-slider", min=0.0, max=2.5, step=0.01, value=0.4),
+        html.Label("Diameter of nanoparticles:"),
+        dcc.Slider(id="d-slider", min=1, max=10, step=1, value=4),
+        html.Label("Number of particles:"),
+        dcc.Slider(id="phi-slider", min=0.001, max=0.1, step=0.001, value=0.02),
+        html.Label("Length of polymer chain:"),
+        dcc.Slider(id="cLength-slider", min=5, max=100, step=1, value=20),
+        html.Div([
+            html.H4('Distance Range'),
+            html.Label("Minimum distance in nm:"),
+            dcc.Input(id='distance-min', type='text', value='0.075'),
+            html.Label("Width range in nm:"),
+            dcc.Input(id='distance-range', type='text', value='150'),
+        ]),
+        html.Button("Predict!", id="predict-button"),  # Button to trigger prediction
+    ]),
     html.Div(id="prediction-output")  # Output container for prediction results
 ])
 
 # Callback to update prediction when the "Predict!" button is clicked
 @app.callback(
-    dash.dependencies.Output("prediction-output", "children"),
-    [dash.dependencies.Input("predict-button", "n_clicks")]
+    Output("prediction-output", "children"),
+    Input("predict-button", "n_clicks"),
+    State("ponp-slider", "value"),
+    State("npnp-slider", "value"),
+    State("d-slider", "value"),
+    State("phi-slider", "value"),
+    State("cLength-slider", "value"),
+    State("distance-min", "value"),
+    State("distance-range", "value")
 )
-def update_prediction(n_clicks):
+def update_prediction(n_clicks, ponp, npnp, d, phi, cLength, distance_min, distance_range):
     if n_clicks is None:
         return None
-    
-    # Get user input features
-    df = user_input_features()
-    
-    # Load the model
-    model = joblib.load('/mount/src/app/model.pkl')
 
-    # Predict
-    predictions1 = model.predict(df)
+    # Convert input strings to numeric values
+    distance_min = float(distance_min)
+    distance_range = float(distance_range)
 
-    # Create and display the prediction plot
-    fig, ax = plt.subplots()
-    ax.scatter(df['distance'], predictions1)
-    ax.set_xlabel('distance')
-    ax.set_ylabel('density')
-    ax.set_title('Prediction')
+    # Generate the input features DataFrame
+    num_points = 2000
+    Po_NP = [ponp] * num_points
+    NP_NP = [npnp] * num_points
+    D_aim = [d] * num_points
+    Phi = [phi] * num_points
+    Chain_length = [cLength] * num_points
+    distance = np.linspace(distance_min, distance_min + distance_range, num_points)
 
-    # Display the plot in Dash
-    return dcc.Graph(
-        id='example-graph',
-        figure={'data': [{'x': df['distance'], 'y': predictions1, 'type': 'scatter'}]}
-    )
+    features = pd.DataFrame({
+        'Po_NP': Po_NP,
+        'NP_NP': NP_NP,
+        'D_aim': D_aim,
+        'Phi': Phi,
+        'Chain length': Chain_length,
+        'distance': distance
+    })
 
-def user_input_features():
-    ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
-    npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
-    d=st.sidebar.slider('Diameter of nanoparticles: ',1,10,4)
-    phi=st.sidebar.slider('Number of particles: ',0.001,0.1,0.02)
-    cLength=st.sidebar.slider('Length of polymer chain: ',5,100,20)
-    st.sidebar.subheader('Distance Range')
-    distance_str_min = st.sidebar.text_input('Minimum distance in nm: ','0.075')
-    distance_str_width_range = st.sidebar.text_input('Width range in nm: ','150')
-    distance_min= float(distance_str_min)
-    distance_range= float(distance_str_width_range)
-    Po_NP=pd.DataFrame({'Po_NP':[ponp]*2000})
-    NP_NP=pd.DataFrame({'NP_NP':[npnp]*2000})
-    D_aim=pd.DataFrame({'D_aim':[d]*2000})
-    Phi=pd.DataFrame({'Phi':[phi]*2000})
-    Chain_length=pd.DataFrame({'Chain_length':[cLength]*2000})
-    distance = pd.DataFrame({'distance': np.linspace(distance_min, distance_min + distance_range, 2000)})
-    features=pd.concat([Po_NP,NP_NP,D_aim,Phi,Chain_length,distance], axis=1)
-    features.columns = ['Po_NP','NP_NP','D_aim','Phi','Chain length','distance']
-    #features=data
-    return features
-df = user_input_features()
- 
-'''st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
-st.header("Problem description")
-st.write("""Polymer nanocomposites (PNC) offer a broad range of properties that are intricately 
-         connected to the spatial distribution of nanoparticles (NPs) in polymer matrices. 
-         Understanding and controlling the distribution of NPs in a polymer matrix is a significantly challenging task.
-         We aim to address this challenge via machine learning. In this website, we use Decision Tree Regression to predict the distribution of nanoparticles in a polymer matrix.""")
-image=Image.open("polymer_nanoparticle.jpg")
-st.image(image,caption="nanoparticle in a polymer matrix, distribution diagram of nanoparticle")
-st.image("https://editor.analyticsvidhya.com/uploads/210362021-07-18%20(2).png",caption="artificial neural network")
-#st.write("For more information, please read this article: ")
-#st.link("https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth",caption="nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix")
-st.write("For more information, please read this article:  [nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix](https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth)")
-if st.sidebar.button("Predict!"):
-    st.subheader('User input parameter')
-    st.write("""
-            Interaction between polymers and nanoparticles: {}\n
-            Interaction between nanoparticles and nanoparticles: {}\n
-            Diameter of nanoparticles: {}\n
-            Number of particle: {}\n
-            Length of polymer chain: {}\n
-            Distance range: {} - {} nm\n
-             """.format(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']),min(df['distance']),max(df['distance'])))
-    # Load the model
-    model = joblib.load('/mount/src/app/model.pkl')
+    # Load the model and make predictions
+    try:
+        model = joblib.load('/mount/src/app/model.pkl')
+        predictions1 = model.predict(features)
 
-    # Print the type and structure of the loaded object
+        # Create and display the prediction plot
+        fig, ax = plt.subplots()
+        ax.scatter(features['distance'], predictions1)
+        ax.set_xlabel('distance')
+        ax.set_ylabel('density')
+        ax.set_title('Prediction')
 
-    predictions1=model.predict(df)
-    st.write('max predicts: ',max(predictions1))
-    st.write('min predicts: ',min(predictions1))
-    st.subheader('Prediction')
+        # Display the plot in Dash
+        return dcc.Graph(
+            id='example-graph',
+            figure={'data': [{'x': features['distance'], 'y': predictions1, 'type': 'scatter'}]}
+        )
+    except Exception as e:
+        return f"An error occurred while making predictions: {e}"
 
-    fig, ax = plt.subplots()
-    ax.scatter(df['distance'],predictions1)
-    ax.set_xlabel('distance')
-    ax.set_ylabel('density')
-    ax.set_title('Prediction')
-
-    # Display the plot in Streamlit
-    st.pyplot(fig)
-'''
 if __name__ == '__main__':
     app.run_server(debug=True)
-'''# -- Allow data download
-    download = df
-    df = pd.DataFrame(download)
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    fn =  str(max(df['Po_NP']))+' - ' +str(max(df['NP_NP']))+str(max(df['D_aim']))+str(max(df['Phi']))+str(max(df['Chain length']))+' - '+str(min(df['distance']))+'/'+str(max(df['distance'])) + '.csv'
-    href = f'<a href="data:file/csv;base64,{b64}" download="{fn}">Download Data as CSV File</a>'
-    st.markdown(href, unsafe_allow_html=True)
-    '''
