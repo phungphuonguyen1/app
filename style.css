@@ -4,3 +4,7 @@ div.css-1r6slb0.e1tzin5v2 {
     padding: 5% 5% 5% 10%;
     border-radius: 10px;
 }
+
+.stColumn {
+    border: 1px solid #000; /* Add your desired border properties here */
+}
