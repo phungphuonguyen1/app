@@ -62,7 +62,7 @@ if st.sidebar.button("Predict!"):
     col4.metric("Number of NP", "{}".format(max(df['Phi'])))
     col5.metric("Length of polymer chain", "{}".format(max(df['Chain length'])))
     st.metric("Distance range: ", "From {} nm to {} nm".format(min(df['distance']),max(df['distance'])))
-    st.write("""
+    #st.write("""
             Interaction between polymers and nanoparticles: {}\n
             Interaction between nanoparticles and nanoparticles: {}\n
             Diameter of nanoparticles: {}\n
