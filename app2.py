@@ -63,13 +63,13 @@ if st.sidebar.button("Predict!"):
     col5.metric("Length of polymer chain", "{}".format(max(df['Chain length'])))
     st.metric("Distance range: ", "From {} nm to {} nm".format(min(df['distance']),max(df['distance'])))
     #st.write("""
-            Interaction between polymers and nanoparticles: {}\n
-            Interaction between nanoparticles and nanoparticles: {}\n
-            Diameter of nanoparticles: {}\n
-            Number of particle: {}\n
-            Length of polymer chain: {}\n
-            Distance range: {} - {} nm\n
-             """.format(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']),min(df['distance']),max(df['distance'])))
+            #Interaction between polymers and nanoparticles: {}\n
+            #Interaction between nanoparticles and nanoparticles: {}\n
+            #Diameter of nanoparticles: {}\n
+            #Number of particle: {}\n
+            #Length of polymer chain: {}\n
+            #Distance range: {} - {} nm\n
+             #""".format(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']),min(df['distance']),max(df['distance'])))
     # Load the model
     model = joblib.load('/mount/src/app/model.pkl')
 
