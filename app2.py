@@ -12,6 +12,15 @@ import sklearn
 img=Image.open("nano.jpg")
 st.set_page_config(page_title='Nanoparticles distribution prediction',page_icon=img)
 
+# hide main menu and footer
+hide_menu_style= """
+    <style>
+    MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_menu_style,unsafe_allow_html=True)
+
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
