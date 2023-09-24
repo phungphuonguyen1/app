@@ -54,7 +54,8 @@ import streamlit as st
 st.markdown("""
 <style>
     [data-testid=stSidebar] {
-        background-color: #ff000050;
+        background-color: green;
+        border-radius: 20px;
     }
 </style>
 """,unsafe_allow_html=True)
