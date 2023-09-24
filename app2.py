@@ -52,11 +52,11 @@ import streamlit as st
 
 # Define custom CSS styles for the sidebar
 custom_css = f"""
-<style>
-.sidebar .sidebar-content {{
-    border-radius: 20px;
-}}
-</style>
+    <style>
+    .sidebar.sidebar-content {{
+        border-radius: 20px;
+    }}
+    </style>
 """
 
 # Apply the custom CSS styles to the Streamlit app
@@ -68,7 +68,7 @@ with st.sidebar:
     
     # Use HTML to create a div with background color, opacity, and rounded border
     info_box = """
-    <div style="background-color: lightblue; opacity: 0.25; padding: 10px;">
+    <div style="background-color: lightblue; padding: 10px;border-radius: 10px;">
         <p>Please enter inputs for the calculation.</p>
     </div>
     """
