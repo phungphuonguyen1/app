@@ -54,7 +54,7 @@ st.markdown(original_title, unsafe_allow_html=True)
 with st.sidebar:
     title='<p style="font-family:Courier; color:Darkblue; font-size: 30px;">Input parameters</p>'
     st.markdown(title,unsafe_allow_html=True)
-    info_box='<div backgrond_color= white; opacity= 0.25>Please enter inputs for the caculation.</div>'
+    info_box='<div backgrond_color= Lightblue; opacity= 0.25>Please enter inputs for the caculation.</div>'
     #st.info("Please enter inputs for the caculation.")
     st.markdown(info_box,unsafe_allow_html=True)
 df = user_input_features()
