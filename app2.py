@@ -126,7 +126,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-with st.expander("Input explaination",type="primary"):
+with st.expander("Input explaination"):
     st.markdown(ls1,unsafe_allow_html=True)
 
 if st.sidebar.button("Predict!"):
