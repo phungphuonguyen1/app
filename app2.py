@@ -93,8 +93,8 @@ if st.sidebar.button("Predict!"):
     st.write('min predicts: ',min(predictions1))
     st.subheader('Prediction')
 
-    fig, ax = plt.subplots()
     plt.style.use('dark_background')
+    fig, ax = plt.subplots()
     ax.scatter(df['distance'],predictions1)
     ax.set_xlabel('distance')
     ax.set_ylabel('density')
