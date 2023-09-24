@@ -52,7 +52,7 @@ def user_input_features():
 original_title = '<p style="font-family:Courier; color:Blue; font-size: 20px;">Original image</p>'
 st.markdown(original_title, unsafe_allow_html=True)
 with st.sidebar:
-    st.title('<h1 style="font-family:Courier; color:Blue; font-size: 20px;">Input parameters</h1>',unsafe_allow_html=True)
+    st.title('<h1 style="font-family:Courier; color:Blue; font-size: 20px;">Input parameters</h1>')
     st.info("Please enter inputs for the caculation.")
 df = user_input_features()
  
