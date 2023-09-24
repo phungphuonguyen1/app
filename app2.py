@@ -8,7 +8,7 @@ import joblib
 from PIL import Image
 import sklearn
 
-color_set="#EE9322"
+color_set="#E9B824"
 
 # Config function
 img=Image.open("nano.jpg")
