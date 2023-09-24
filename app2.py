@@ -95,10 +95,10 @@ if st.sidebar.button("Predict!"):
 
     plt.style.use('dark_background')
     fig, ax = plt.subplots()
-    ax.scatter(df['distance'],predictions1, c="lightblue",border="green")
-    ax.set_xlabel('distance')
-    ax.set_ylabel('density')
-    ax.set_title('Prediction')
+    ax.scatter(df['distance'],predictions1, c="lightblue",edgecolors="green")
+    ax.set_xlabel('Distance (nm)')
+    ax.set_ylabel('Density')
+    ax.set_title('Nanoparticle distribution Prediction')
 
     # Display the plot in Streamlit
     st.pyplot(fig)
