@@ -111,9 +111,9 @@ if st.sidebar.button("Predict!"):
     #href = f'<a href="data:file/csv;base64,{b64}" download="{fn}">Download Data as CSV File</a>'
     #st.markdown(href, unsafe_allow_html=True)"""
     st.download_button(
-        "Download data csv",
-        download,
-        file_name=fn, 
+        label="Download data as CSV",
+        data=df,
+        file_name=fn,
         mime='text/csv',
         on_click= st.write("Successful download data!")
     )
