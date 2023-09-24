@@ -95,7 +95,7 @@ if st.sidebar.button("Predict!"):
 
     plt.style.use('dark_background')
     fig, ax = plt.subplots()
-    ax.scatter(df['distance'],predictions1)
+    ax.scatter(df['distance'],predictions1, c="lightblue",border="green")
     ax.set_xlabel('distance')
     ax.set_ylabel('density')
     ax.set_title('Prediction')
@@ -103,14 +103,11 @@ if st.sidebar.button("Predict!"):
     # Display the plot in Streamlit
     st.pyplot(fig)
 
-    # -- Allow data download
+    #Allow data download
     download = df
     df = pd.DataFrame(download)
     csv = df.to_csv(index=False)
-    #b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
     fn =  str(max(df['Po_NP']))+' - ' +str(max(df['NP_NP']))+str(max(df['D_aim']))+str(max(df['Phi']))+str(max(df['Chain length']))+' - '+str(min(df['distance']))+'/'+str(max(df['distance'])) + '.csv'
-    #href = f'<a href="data:file/csv;base64,{b64}" download="{fn}">Download Data as CSV File</a>'
-    #st.markdown(href, unsafe_allow_html=True)"""
     st.download_button(
         label="Download data as CSV",
         data=csv,
