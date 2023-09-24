@@ -8,6 +8,8 @@ import joblib
 from PIL import Image
 import sklearn
 
+color_set="#EE9322"
+
 # Config function
 img=Image.open("nano.jpg")
 st.set_page_config(page_title='Nanoparticles distribution prediction',page_icon=img)
@@ -48,24 +50,25 @@ def user_input_features():
     #model = joblib.load("/mount/src/app/model.pkl")
 #except Exception as e:
     #st.error(f"An error occurred while loading the model: {e}")
-import streamlit as st
-
 
 st.markdown("""
 <style>
     [data-testid=stSidebar][aria-expanded="true"]{
-        background-color: lightgreen;
+        background-color: color_set;
         border-radius: 20px;
     }
 </style>
 """,unsafe_allow_html=True)
+
+#letter-spacing: 4px;
+#text-shadow: 3px 1px blue;
 with st.sidebar:
-    title = '<p style="font-family: Courier; color: Darkblue; font-size: 30px;background-color: Lightblue;">Input parameters</p>'
+    title = '<p style="font-family: Courier;text-align: center;font-weight: bolder; color: Darkblue; font-size: 30px;">Input parameters</p>'
     st.markdown(title, unsafe_allow_html=True)
         
         # Use HTML to create a div with background color, opacity, and rounded border
     info_box = """
-    <div style="background-color: lightblue; padding: 10px;border-radius:10px">
+    <div style="background-color: white; padding: 10px;border-radius:10px">
         <p>Please enter inputs for the calculation.</p>
     </div>
     """
