@@ -53,8 +53,8 @@ import streamlit as st
 
 st.markdown("""
 <style>
-    [data-testid=stSidebar] {
-        background-color: green;
+    [data-testid=stSidebar][aria-expanded="true"]{
+        background-color: lightgreen;
         border-radius: 20px;
     }
 </style>
