@@ -152,9 +152,12 @@ if st.sidebar.button("Predict!"):
     df = pd.DataFrame(download)
     csv = df.to_csv(index=False)
     fn =  str(max(df['Po_NP']))+' - ' +str(max(df['NP_NP']))+str(max(df['D_aim']))+str(max(df['Phi']))+str(max(df['Chain length']))+' - '+str(min(df['distance']))+'/'+str(max(df['distance'])) + '.csv'
-    st.download_button(
+    down_load_button= st.download_button(
         label="Download data as CSV",
         data=csv,
         file_name=fn,
         mime='text/csv',
     )
+    if down_load_button:
+        st.success("Successful download!")
+    
