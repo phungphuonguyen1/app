@@ -99,10 +99,9 @@ st.image("https://editor.analyticsvidhya.com/uploads/210362021-07-18%20(2).png",
 #st.write("For more information, please read this article: ")
 #st.link("https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth",caption="nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix")
 st.write("For more information, please read this article:  [nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix](https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth)")
-# Define a custom CSS class for the button
+
 # Define a custom CSS style
-st.markdown(
-    """
+custom_button_style = """
     <style>
     .my-button {
         background-color: #00FF00; /* Green background color */
@@ -110,14 +109,17 @@ st.markdown(
         border-radius: 20px; /* Rounded corners */
         padding: 10px 20px; /* Padding around the text */
         font-weight: bold; /* Bold text */
+        cursor: pointer; /* Add a pointer cursor on hover */
+    }
+    .my-button:hover {
+        background-color: #009900; /* Change background color on hover */
     }
     </style>
-    """,
-    unsafe_allow_html=True,
-)
+"""
 
-# Apply the custom style by using the style argument
-if st.button("Styled Button", key="my_button", help="This is a styled button.", on_click=None, args=None, kwargs=None, style="my-button"):
+# Display the custom-styled button
+st.markdown(custom_button_style, unsafe_allow_html=True)
+if st.button("Styled Button", key="my_button"):
     st.success("Button Clicked!")
 if st.sidebar.button("Predict!"):
     st.subheader('User input parameter')
