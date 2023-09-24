@@ -50,19 +50,16 @@ def user_input_features():
     #st.error(f"An error occurred while loading the model: {e}")
 import streamlit as st
 
-custom_css = f"""
-<style>
-.sidebar{{
-    background-color: green;
-    border: 2px solid #000; /* Add a 2px solid black border */
-    border-radius: 20px; /* Add a border radius of 20px */
-}}
-</style>
-"""
-
 # Apply the custom CSS styles to the Streamlit app
 with st.sidebar:
-    st.markdown(custom_css, unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+        .sidebar .sidebar-content {
+        background-color: green;
+        border-radius: 20px;
+        }
+    </style>
+    """, unsafe_allow_html=True)
     title = '<p style="font-family: Courier; color: Darkblue; font-size: 30px;">Input parameters</p>'
     st.markdown(title, unsafe_allow_html=True)
         
