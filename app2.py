@@ -102,12 +102,12 @@ st.write("For more information, please read this article:  [nanoNET: machine lea
 
 # input explaination:
 ls1='<ul>
-    <li>Interaction polymer-nanoparticle: amplitube</li>
-    <li>Interaction nanoparticle-nanoparticle: amplitube</li>
-    <li>Diameter of nanoparticle: size of nanoparticle (sperical, in nanometer)</li>
-    <li>Number of nanoparticle: represented by mass of nanoparticle per total volume</li>
-    <li>Length of polymer chain: in nanometer</li>
-    <li>Distance: range should be small (less than length of polymer chain)</li>
+        <li>Interaction polymer-nanoparticle: amplitube</li>
+        <li>Interaction nanoparticle-nanoparticle: amplitube</li>
+        <li>Diameter of nanoparticle: size of nanoparticle (sperical, in nanometer)</li>
+        <li>Number of nanoparticle: represented by mass of nanoparticle per total volume</li>
+        <li>Length of polymer chain: in nanometer</li>
+        <li>Distance: range should be small (less than length of polymer chain)</li>
     </ul>'
 #ls2='<li>Interaction nanoparticle-nanoparticle: amplitube</li>'
 #ls3='<li>Diameter of nanoparticle: size of nanoparticle (sperical, in nanometer)</li>'
