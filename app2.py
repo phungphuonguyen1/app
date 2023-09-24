@@ -8,6 +8,10 @@ import joblib
 from PIL import Image
 import sklearn
 
+# Config function
+img=Image.open("nano.jpg")
+st.set_page_config(page_title='Nanoparticles distribution prediction',page_icon=img)
+
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
