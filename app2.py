@@ -116,4 +116,5 @@ if st.sidebar.button("Predict!"):
         data=csv,
         file_name=fn,
         mime='text/csv',
+        on_click= st.write("Successful downloaded data")
     )
