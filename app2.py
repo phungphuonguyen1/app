@@ -114,7 +114,7 @@ ls1="""<ul>
 #ls4='<li>Number of nanoparticle: represented by mass of nanoparticle per total volume</li>'
 #ls5='<li>Length of polymer chain: in nanometer</li>'
 #ls6='<li>Distance: range should be small (less than length of polymer chain)</li>'
-with st.expander("Input explaination"):
+with st.expander("Input explaination",type="primary"):
     st.markdown(ls1,unsafe_allow_html=True)
 
 if st.sidebar.button("Predict!"):
