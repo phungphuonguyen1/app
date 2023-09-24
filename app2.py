@@ -101,14 +101,14 @@ st.image("https://editor.analyticsvidhya.com/uploads/210362021-07-18%20(2).png",
 st.write("For more information, please read this article:  [nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix](https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth)")
 
 # input explaination:
-ls1='<ul>
+ls1="""<ul>
         <li>Interaction polymer-nanoparticle: amplitube</li>
         <li>Interaction nanoparticle-nanoparticle: amplitube</li>
         <li>Diameter of nanoparticle: size of nanoparticle (sperical, in nanometer)</li>
         <li>Number of nanoparticle: represented by mass of nanoparticle per total volume</li>
         <li>Length of polymer chain: in nanometer</li>
         <li>Distance: range should be small (less than length of polymer chain)</li>
-    </ul>'
+    </ul>"""
 #ls2='<li>Interaction nanoparticle-nanoparticle: amplitube</li>'
 #ls3='<li>Diameter of nanoparticle: size of nanoparticle (sperical, in nanometer)</li>'
 #ls4='<li>Number of nanoparticle: represented by mass of nanoparticle per total volume</li>'
