@@ -94,6 +94,7 @@ if st.sidebar.button("Predict!"):
     st.subheader('Prediction')
 
     fig, ax = plt.subplots()
+    plt.style.use('dark_background')
     ax.scatter(df['distance'],predictions1)
     ax.set_xlabel('distance')
     ax.set_ylabel('density')
