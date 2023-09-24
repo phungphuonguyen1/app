@@ -100,28 +100,6 @@ st.image("https://editor.analyticsvidhya.com/uploads/210362021-07-18%20(2).png",
 #st.link("https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth",caption="nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix")
 st.write("For more information, please read this article:  [nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix](https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth)")
 
-# Define a custom CSS style
-custom_button_style = """
-    <style>
-    .my-button {
-        background-color: orange;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-    }
-    .my-button:hover {
-        background-color: red;
-    }
-    </style>
-"""
-
-# Display the custom-styled button
-st.markdown(custom_button_style, unsafe_allow_html=True)
-if st.button("Custom Button", key="my_button"):
-    st.success("Button Clicked!")
-    
 if st.sidebar.button("Predict!"):
     st.subheader('User input parameter')
     col1, col2, col3 = st.columns(3)
@@ -157,6 +135,7 @@ if st.sidebar.button("Predict!"):
         data=csv,
         file_name=fn,
         mime='text/csv',
+        type="primary",
     )
     if down_load_button:
         st.success("Successful download!")
