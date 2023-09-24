@@ -55,7 +55,7 @@ with st.sidebar:
     title='<p style="font-family:Courier; color:Darkblue; font-size: 30px;">Input parameters</p>'
     st.markdown(title,unsafe_allow_html=True)
     info_box = """
-    <div style="background-color: lightblue; opacity: 0.25; padding: 10px;">
+    <div style="background-color: lightblue; padding: 10px;">
         <p>Please enter inputs for the calculation.</p>
     </div>
     """
