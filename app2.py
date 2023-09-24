@@ -48,18 +48,32 @@ def user_input_features():
     #model = joblib.load("/mount/src/app/model.pkl")
 #except Exception as e:
     #st.error(f"An error occurred while loading the model: {e}")
+import streamlit as st
 
-original_title = '<p style="font-family:Courier; color:Blue; font-size: 20px;">Original image</p>'
-st.markdown(original_title, unsafe_allow_html=True)
+# Define custom CSS styles for the sidebar
+custom_css = f"""
+<style>
+.sidebar .sidebar-content {{
+    border-radius: 20px;
+}}
+</style>
+"""
+
+# Apply the custom CSS styles to the Streamlit app
+st.markdown(custom_css, unsafe_allow_html=True)
+
 with st.sidebar:
-    title='<p style="font-family:Courier; color:Darkblue; font-size: 30px;">Input parameters</p>'
-    st.markdown(title,unsafe_allow_html=True)
+    title = '<p style="font-family: Courier; color: Darkblue; font-size: 30px;">Input parameters</p>'
+    st.markdown(title, unsafe_allow_html=True)
+    
+    # Use HTML to create a div with background color, opacity, and rounded border
     info_box = """
-    <div style="background-color: lightblue; padding: 10px;">
+    <div style="background-color: lightblue; opacity: 0.25; padding: 10px;">
         <p>Please enter inputs for the calculation.</p>
     </div>
     """
     st.markdown(info_box, unsafe_allow_html=True)
+
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
