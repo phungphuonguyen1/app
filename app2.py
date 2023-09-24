@@ -86,8 +86,8 @@ with st.sidebar:
     """
     st.markdown(info_box, unsafe_allow_html=True)
 df = user_input_features()
-title_main=<h1 style="text-align:center; font-weight: bolder;color: Darkpink;">DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION</h1>
-st.title(title_main)
+title_main='<h1 style="text-align:center; font-weight: bolder;color: Darkpink;">DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION</h1>'
+st.markdown(title_main,unsafe_allow_html=True)
 st.header("Problem description")
 st.write("""Polymer nanocomposites (PNC) offer a broad range of properties that are intricately 
          connected to the spatial distribution of nanoparticles (NPs) in polymer matrices. 
