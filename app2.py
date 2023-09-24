@@ -75,22 +75,9 @@ if st.sidebar.button("Predict!"):
     col4.metric("Number of NP", "{}".format(max(df['Phi'])))
     col5.metric("Length of polymer chain", "{}".format(max(df['Chain length'])))
     st.metric("Distance range: ", "From {} nm to {} nm".format(min(df['distance']),max(df['distance'])))
-    #st.write("""
-            #Interaction between polymers and nanoparticles: {}\n
-            #Interaction between nanoparticles and nanoparticles: {}\n
-            #Diameter of nanoparticles: {}\n
-            #Number of particle: {}\n
-            #Length of polymer chain: {}\n
-            #Distance range: {} - {} nm\n
-             #""".format(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']),min(df['distance']),max(df['distance'])))
     # Load the model
     model = joblib.load('/mount/src/app/model.pkl')
-
-    # Print the type and structure of the loaded object
-
     predictions1=model.predict(df)
-    st.write('max predicts: ',max(predictions1))
-    st.write('min predicts: ',min(predictions1))
     st.subheader('Prediction')
 
     plt.style.use('dark_background')
@@ -113,5 +100,4 @@ if st.sidebar.button("Predict!"):
         data=csv,
         file_name=fn,
         mime='text/csv',
-        on_click= st.write("Successful downloaded data")
     )
