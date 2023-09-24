@@ -109,11 +109,23 @@ ls1="""<ul>
         <li>Length of polymer chain: in nanometer</li>
         <li>Distance: range should be small (less than length of polymer chain)</li>
     </ul>"""
-#ls2='<li>Interaction nanoparticle-nanoparticle: amplitube</li>'
-#ls3='<li>Diameter of nanoparticle: size of nanoparticle (sperical, in nanometer)</li>'
-#ls4='<li>Number of nanoparticle: represented by mass of nanoparticle per total volume</li>'
-#ls5='<li>Length of polymer chain: in nanometer</li>'
-#ls6='<li>Distance: range should be small (less than length of polymer chain)</li>'
+
+st.markdown(
+    '''
+    <style>
+    .streamlit-expanderHeader {
+        background-color: white;
+        color: black; # Adjust this for expander header color
+    }
+    .streamlit-expanderContent {
+        background-color: white;
+        color: black; # Expander content color
+    }
+    </style>
+    ''',
+    unsafe_allow_html=True
+)
+
 with st.expander("Input explaination",type="primary"):
     st.markdown(ls1,unsafe_allow_html=True)
 
