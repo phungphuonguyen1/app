@@ -117,7 +117,7 @@ st.markdown(
 )
 
 # Apply the custom style by using the style argument
-if st.button("Styled Button", key="my_button", help="This is a styled button.", key="my_button", on_click=None, args=None, kwargs=None, style="my-button"):
+if st.button("Styled Button", key="my_button", help="This is a styled button.", on_click=None, args=None, kwargs=None, style="my-button"):
     st.success("Button Clicked!")
 if st.sidebar.button("Predict!"):
     st.subheader('User input parameter')
