@@ -100,6 +100,7 @@ st.image("https://editor.analyticsvidhya.com/uploads/210362021-07-18%20(2).png",
 #st.link("https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth",caption="nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix")
 st.write("For more information, please read this article:  [nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix](https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth)")
 # Define a custom CSS class for the button
+# Define a custom CSS style
 st.markdown(
     """
     <style>
@@ -115,8 +116,8 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Use the custom CSS class for the button
-if st.button("Styled Button", key="my_button", help="This is a styled button.", class="my-button"):
+# Apply the custom style by using the style argument
+if st.button("Styled Button", key="my_button", help="This is a styled button.", key="my_button", on_click=None, args=None, kwargs=None, style="my-button"):
     st.success("Button Clicked!")
 if st.sidebar.button("Predict!"):
     st.subheader('User input parameter')
