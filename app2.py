@@ -104,7 +104,7 @@ st.write("For more information, please read this article:  [nanoNET: machine lea
 custom_button_style = """
     <style>
     .my-button {
-        background-color: #00FF00; /* Green background color */
+        background-color: #219C90; /* Green background color */
         color: #FFFFFF; /* White text color */
         border-radius: 20px; /* Rounded corners */
         padding: 10px 20px; /* Padding around the text */
@@ -121,6 +121,31 @@ custom_button_style = """
 st.markdown(custom_button_style, unsafe_allow_html=True)
 if st.button("Styled Button", key="my_button"):
     st.success("Button Clicked!")
+
+import streamlit as st
+
+# Define a custom CSS style
+custom_button_style = """
+    <style>
+    .my-button {
+        background-color: orange;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+    .my-button:hover {
+        background-color: red;
+    }
+    </style>
+"""
+
+# Display the custom-styled button
+st.markdown(custom_button_style, unsafe_allow_html=True)
+if st.button("Custom Button", key="my_button"):
+    st.success("Button Clicked!")
+    
 if st.sidebar.button("Predict!"):
     st.subheader('User input parameter')
     col1, col2, col3 = st.columns(3)
