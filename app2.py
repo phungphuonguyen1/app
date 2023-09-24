@@ -33,7 +33,7 @@ st.write("""
         background-color: #FF0000; /* Thumb color */
     }
 </style>
-""")
+""", unsafe_allow_html=True)
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
