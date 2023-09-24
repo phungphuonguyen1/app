@@ -54,9 +54,12 @@ st.markdown(original_title, unsafe_allow_html=True)
 with st.sidebar:
     title='<p style="font-family:Courier; color:Darkblue; font-size: 30px;">Input parameters</p>'
     st.markdown(title,unsafe_allow_html=True)
-    info_box='<div background-color: lightblue; opacity: 0.3;><p>Please enter inputs for the caculation.</p></div>'
-    #st.info("Please enter inputs for the caculation.")
-    st.markdown(info_box,unsafe_allow_html=True)
+    info_box = """
+    <div style="background-color: lightblue; opacity: 0.25; padding: 10px;">
+        <p>Please enter inputs for the calculation.</p>
+    </div>
+    """
+    st.markdown(info_box, unsafe_allow_html=True)
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
