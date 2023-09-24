@@ -105,11 +105,11 @@ if st.sidebar.button("Predict!"):
     # -- Allow data download
     download = df
     df = pd.DataFrame(download)
-    """csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+    #csv = df.to_csv(index=False)
+    #b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
     fn =  str(max(df['Po_NP']))+' - ' +str(max(df['NP_NP']))+str(max(df['D_aim']))+str(max(df['Phi']))+str(max(df['Chain length']))+' - '+str(min(df['distance']))+'/'+str(max(df['distance'])) + '.csv'
-    href = f'<a href="data:file/csv;base64,{b64}" download="{fn}">Download Data as CSV File</a>'
-    st.markdown(href, unsafe_allow_html=True)"""
+    #href = f'<a href="data:file/csv;base64,{b64}" download="{fn}">Download Data as CSV File</a>'
+    #st.markdown(href, unsafe_allow_html=True)"""
     st.download_button(
         "Download data csv",
         download,
