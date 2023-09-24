@@ -48,8 +48,11 @@ def user_input_features():
     #model = joblib.load("/mount/src/app/model.pkl")
 #except Exception as e:
     #st.error(f"An error occurred while loading the model: {e}")
+
+original_title = '<p style="font-family:Courier; color:Blue; font-size: 20px;">Original image</p>'
+st.markdown(original_title, unsafe_allow_html=True)
 with st.sidebar:
-    st.title("Input parameters")
+    st.title(<h1 style="font-family:Courier; color:Blue; font-size: 20px;">Input parameters</h1>)
     st.info("Please enter inputs for the caculation.")
 df = user_input_features()
  
