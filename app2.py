@@ -53,6 +53,7 @@ import streamlit as st
 custom_css = f"""
 <style>
 .sidebar-container {{
+    background-color: green;
     border: 2px solid #000; /* Add a 2px solid black border */
     border-radius: 20px; /* Add a border radius of 20px */
 }}
