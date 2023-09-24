@@ -22,7 +22,18 @@ hide_menu_style= """
     </style>
 """
 st.markdown(hide_menu_style,unsafe_allow_html=True)
+st.write("""
+<style>
+    .st-eb {
+        background-color: #EE9322; /* Background color */
+        border-radius: 10px; /* Border radius */
+    }
 
+    .st-ec .st-ed { /* Thumb of the slider */
+        background-color: #FF0000; /* Thumb color */
+    }
+</style>
+""
 def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
@@ -68,7 +79,7 @@ with st.sidebar:
         
         # Use HTML to create a div with background color, opacity, and rounded border
     info_box = """
-    <div style="background-color: white; padding: 10px;border-radius:10px">
+    <div style="background-color: white;text-align: center; padding: 10px;border-radius:10px">
         <p>Please enter inputs for the calculation.</p>
     </div>
     """
