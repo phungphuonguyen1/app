@@ -8,7 +8,7 @@ import joblib
 from PIL import Image
 import sklearn
 
-color_set= #ee9322
+#color_set= #ee9322
 
 # Config function
 img=Image.open("nano.jpg")
@@ -54,7 +54,7 @@ def user_input_features():
 st.markdown("""
 <style>
     [data-testid=stSidebar][aria-expanded="true"]{
-        background-color: color_set;
+        background-color: #ee9322;
         border-radius: 20px;
     }
 </style>
