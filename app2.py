@@ -53,10 +53,11 @@ import streamlit as st
 # Define custom CSS styles for the sidebar
 custom_css = f"""
 <style>
-.sidebar {{
-    border: 2px solid #000; /* Add a 2px solid black border */
-    border-radius: 20px; /* Add a border radius of 20px */
-}}
+    .sidebar{{
+        background-color='green';
+        border: 2px solid #000; /* Add a 2px solid black border */
+        border-radius: 20px; /* Add a border radius of 20px */
+    }}
 </style>
 """
 
