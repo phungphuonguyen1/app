@@ -52,7 +52,7 @@ import streamlit as st
 
 custom_css = f"""
 <style>
-.sidebar-container {{
+.sidebar{{
     background-color: green;
     border: 2px solid #000; /* Add a 2px solid black border */
     border-radius: 20px; /* Add a border radius of 20px */
@@ -61,20 +61,18 @@ custom_css = f"""
 """
 
 # Apply the custom CSS styles to the Streamlit app
-st.markdown(custom_css, unsafe_allow_html=True)
-
-with st.container():
-    with st.sidebar:
-        title = '<p style="font-family: Courier; color: Darkblue; font-size: 30px;">Input parameters</p>'
-        st.markdown(title, unsafe_allow_html=True)
+with st.sidebar:
+    st.markdown(custom_css, unsafe_allow_html=True)
+    title = '<p style="font-family: Courier; color: Darkblue; font-size: 30px;">Input parameters</p>'
+    st.markdown(title, unsafe_allow_html=True)
         
         # Use HTML to create a div with background color, opacity, and rounded border
-        info_box = """
-        <div style="background-color: lightblue; padding: 10px;border-radius:10px">
-            <p>Please enter inputs for the calculation.</p>
-        </div>
-        """
-        st.markdown(info_box, unsafe_allow_html=True)
+    info_box = """
+    <div style="background-color: lightblue; padding: 10px;border-radius:10px">
+        <p>Please enter inputs for the calculation.</p>
+    </div>
+    """
+    st.markdown(info_box, unsafe_allow_html=True)
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
