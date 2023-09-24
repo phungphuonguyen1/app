@@ -52,9 +52,11 @@ def user_input_features():
 original_title = '<p style="font-family:Courier; color:Blue; font-size: 20px;">Original image</p>'
 st.markdown(original_title, unsafe_allow_html=True)
 with st.sidebar:
-    title='<p style="font-family:Courier; color:Lightblue; font-size: 30px;">Input parameters</p>'
+    title='<p style="font-family:Courier; color:Darkblue; font-size: 30px;">Input parameters</p>'
     st.markdown(title,unsafe_allow_html=True)
-    st.info("Please enter inputs for the caculation.")
+    info_box=<div backgrond_color= white; opacity= 0.25>Please enter inputs for the caculation.</div>
+    #st.info("Please enter inputs for the caculation.")
+    st.write(info_box,unsafe_allow_html=True)
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
