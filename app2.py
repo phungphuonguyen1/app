@@ -51,16 +51,24 @@ def user_input_features():
 import streamlit as st
 
 # Apply the custom CSS styles to the Streamlit app
-with st.sidebar:
-    st.markdown("""
+st.markdown(
+    """
     <style>
-        .sidebar .sidebar-content {
+    .sidebar .sidebar-content {
         background-color: green;
         border-radius: 20px;
-        }
+    }
+    .sidebar .stMarkdown {
+        background-color: lightblue;
+        padding: 10px;
+        border-radius: 10px;
+    }
     </style>
-    """, unsafe_allow_html=True)
-    title = '<p style="font-family: Courier; color: Darkblue; font-size: 30px;">Input parameters</p>'
+    """,
+    unsafe_allow_html=True,
+)
+with st.sidebar:
+    title = '<p style="font-family: Courier; color: Darkblue; font-size: 30px;background-color: Lightblue;">Input parameters</p>'
     st.markdown(title, unsafe_allow_html=True)
         
         # Use HTML to create a div with background color, opacity, and rounded border
