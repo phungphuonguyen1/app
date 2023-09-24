@@ -56,7 +56,7 @@ with st.sidebar:
     st.markdown(title,unsafe_allow_html=True)
     info_box='<div backgrond_color= white; opacity= 0.25>Please enter inputs for the caculation.</div>'
     #st.info("Please enter inputs for the caculation.")
-    st.write(info_box,unsafe_allow_html=True)
+    st.markdown(info_box,unsafe_allow_html=True)
 df = user_input_features()
  
 st.title("DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION")
