@@ -95,7 +95,7 @@ if st.sidebar.button("Predict!"):
 
     plt.style.use('dark_background')
     fig, ax = plt.subplots()
-    ax.scatter(df['distance'],predictions1, c="lightblue",edgecolors="green")
+    ax.scatter(df['distance'],predictions1, c="lightblue")
     ax.set_xlabel('Distance (nm)')
     ax.set_ylabel('Density')
     ax.set_title('Nanoparticle distribution Prediction')
