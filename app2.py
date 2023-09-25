@@ -143,7 +143,7 @@ if st.sidebar.button("Predict!"):
     # Load the model
     model = joblib.load('/mount/src/app/model.pkl')
     predictions1=model.predict(df)
-    res= result_programme(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Chain length']))
+    res= result_programme(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']))
     st.write(pd.DataFrame(res.iloc[:,6:8]))
     st.subheader('Prediction')
     
