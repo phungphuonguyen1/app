@@ -89,16 +89,15 @@ with st.sidebar:
 df = user_input_features()
 title_main='<h1 style="text-align:center; font-weight: bolder;color: #EE9322;text-shadow: 3px 1px blue;">DISTRIBUTION OF NANOPARTICLES IN A POLYMER MATRIX PREDICTION</h1>'
 st.markdown(title_main,unsafe_allow_html=True)
-st.header("Problem description")
-st.write("""Polymer nanocomposites (PNC) offer a broad range of properties that are intricately 
+header1_main='<h2 style="text-align:center; font-weight: bolder;">Problem Description</h2>'
+st.markdown(header1_main,unsafe_allow_html=True)
+st.write("""    Polymer nanocomposites (PNC) offer a broad range of properties that are intricately 
          connected to the spatial distribution of nanoparticles (NPs) in polymer matrices. 
          Understanding and controlling the distribution of NPs in a polymer matrix is a significantly challenging task.
          We aim to address this challenge via machine learning. In this website, we use Decision Tree Regression to predict the distribution of nanoparticles in a polymer matrix.""")
 image=Image.open("polymer_nanoparticle.jpg")
 st.image(image,caption="nanoparticle in a polymer matrix, distribution diagram of nanoparticle")
 st.image("https://editor.analyticsvidhya.com/uploads/210362021-07-18%20(2).png",caption="artificial neural network")
-#st.write("For more information, please read this article: ")
-#st.link("https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth",caption="nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix")
 st.write("For more information, please read this article:  [nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix](https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth)")
 
 # input explaination:
@@ -133,7 +132,8 @@ with st.expander("Input explaination"):
     st.markdown(ls1,unsafe_allow_html=True)
 
 if st.sidebar.button("Predict!"):
-    st.subheader('User input parameter')
+    header2_main='<h2 style="text-align:center; font-weight: bolder;">User Input Parameters</h2>'
+    st.markdown(header2_main,unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     col1.metric("Interaction: polymer-NP", "{}".format(max(df['Po_NP'])))
     col2.metric("Interaction: NP-NP", "{}".format(max(df['NP_NP'])))
