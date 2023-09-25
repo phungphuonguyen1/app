@@ -115,8 +115,10 @@ st.markdown(
     '''
     <style>
     .streamlit-expanderHeader {
-        background-color: white;
+        background-color: lightblue;
         color: black; # Adjust this for expander header color
+        border-radius: 20px;
+        text-align:center;
     }
     .streamlit-expanderContent {
         background-color: white;
@@ -158,7 +160,7 @@ if st.sidebar.button("Predict!"):
     ax.set_xlabel('Distance (nm)')
     ax.set_ylabel('Density')
     ax.legend()
-    ax.xlim(min(df['distance']),max(df['distance']))
+    ax.set_xlim(min(df['distance']), max(df['distance']))
     ax.set_title('Nanoparticle distribution Prediction')
 
     # Display the plot in Streamlit
