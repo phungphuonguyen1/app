@@ -153,8 +153,8 @@ if st.sidebar.button("Predict!"):
     
     plt.style.use('dark_background')
     fig, ax = plt.subplots()
-    ax.scatter(df['distance'],predictions1, c="lightblue",legend='Prediction')
-    ax.scatter(frame1,frame2, c='green',legend='Calculation')
+    ax.scatter(df['distance'],predictions1, c="lightblue",label='Prediction')
+    ax.scatter(frame1,frame2, c='green',label='Calculation')
     ax.set_xlabel('Distance (nm)')
     ax.set_ylabel('Density')
     ax.legend()
