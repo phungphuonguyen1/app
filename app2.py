@@ -145,6 +145,7 @@ if st.sidebar.button("Predict!"):
     predictions1=model.predict(df)
     res= result_programme(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']))
     #st.write(pd.DataFrame(res.iloc[:,6:8]))
+    st.write(type(res))
     st.subheader('Prediction')
     
     plt.style.use('dark_background')
