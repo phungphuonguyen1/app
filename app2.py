@@ -10,7 +10,7 @@ import sklearn
 import pyPRISM
 import holoviews as hv
 hv.extension('bokeh')
-from pyPRISMfile.py import *
+from pyPRISMfile import *
 # Config function
 img=Image.open("nano.jpg")
 st.set_page_config(page_title='Nanoparticles distribution prediction',page_icon=img)
