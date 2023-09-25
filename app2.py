@@ -99,6 +99,7 @@ image=Image.open("polymer_nanoparticle.jpg")
 st.image(image,caption="nanoparticle in a polymer matrix, distribution diagram of nanoparticle")
 st.image("https://editor.analyticsvidhya.com/uploads/210362021-07-18%20(2).png",caption="artificial neural network")
 st.write("    In this problem, we have 6 inputs including: amplitude of interaction between polymer-nanoparticle, nanoparticle-nanoparticle, diameter of nanoparticle, phi, chain length of polymer and distance range")
+st.write("    While output is function g(r)- distribution of nanoparticle.")
 st.write("For more information, please read this article:  [nanoNET: machine learning platform for predicting nanoparticles distribution in a polymer matrix](https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00567d/unauth)")
 
 # input explaination:
