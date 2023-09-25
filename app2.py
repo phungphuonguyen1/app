@@ -147,8 +147,9 @@ if st.sidebar.button("Predict!"):
     data_res=pd.DataFrame(res)
     #st.write(type(data_res))
     #st.write(data_res)
-    frame1=data_res.iloc[:,6][0].values
-    frame2=data_res.iloc[:,7][0].values
+    frame1=data_res.iloc[:,6][0]
+    frame2=data_res.iloc[:,7][0]
+    st.write(type(frame1))
     st.write('min x: ',min(frame1))
     st.write('max x: ',max(frame1))
     st.write(frame1)
