@@ -7,9 +7,10 @@ import base64
 import joblib
 from PIL import Image
 import sklearn
-
-#color_set= #ee9322
-
+import pyPRISM
+import holoviews as hv
+hv.extension('bokeh')
+from pyPRISMfile.py import *
 # Config function
 img=Image.open("nano.jpg")
 st.set_page_config(page_title='Nanoparticles distribution prediction',page_icon=img)
