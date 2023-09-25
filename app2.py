@@ -28,7 +28,7 @@ def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
     d=st.sidebar.slider('Diameter of nanoparticles: ',1,10,4)
-    phi=st.sidebar.slider('100*Phi: ',0.1,1,0.2)
+    phi=st.sidebar.slider('100*Phi: ',0.1,0.5,0.2)
     cLength=st.sidebar.slider('Length of polymer chain: ',5,60,10)
     st.sidebar.subheader('Distance Range')
     distance_str_min = st.sidebar.text_input('Minimum distance in nm: ','0.075')
