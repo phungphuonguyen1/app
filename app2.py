@@ -145,23 +145,19 @@ if st.sidebar.button("Predict!"):
     predictions1=model.predict(df)
     res= result_programme(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']))
     data_res=pd.DataFrame(res)
-    #st.write(type(data_res))
-    #st.write(data_res)
     frame1=data_res.iloc[:,6][0]
     frame2=data_res.iloc[:,7][0]
-    st.write(type(frame1))
-    st.write('min x: ',min(frame1))
-    st.write('max x: ',max(frame1))
-    st.write(frame1)
-    st.write(frame2)
+    st.write('Minimum distance in calculation: ',min(frame1))
+    st.write('Maximum distance in calculation: ',max(frame1))
     st.subheader('Prediction')
     
     plt.style.use('dark_background')
     fig, ax = plt.subplots()
-    ax.scatter(df['distance'],predictions1, c="lightblue")
-    ax.scatter(frame1,frame2, c='red')
+    ax.scatter(df['distance'],predictions1, c="lightblue",legend='Prediction')
+    ax.scatter(frame1,frame2, c='green',legend='Calculation')
     ax.set_xlabel('Distance (nm)')
     ax.set_ylabel('Density')
+    ax.legend()
     ax.set_title('Nanoparticle distribution Prediction')
 
     # Display the plot in Streamlit
