@@ -145,10 +145,10 @@ if st.sidebar.button("Predict!"):
     predictions1=model.predict(df)
     res= result_programme(max(df['Po_NP']),max(df['NP_NP']),max(df['D_aim']),max(df['Phi']),max(df['Chain length']))
     data_res=pd.DataFrame(res)
-    st.write(type(data_res))
+    #st.write(type(data_res))
     #st.write(data_res)
     frame1=data_res.iloc[:,6]
-    frame2=data_res.iloc[:,6:8]
+    frame2=data_res.iloc[:,7]
     st.write(frame1)
     st.write(frame2)
     st.subheader('Prediction')
@@ -156,6 +156,7 @@ if st.sidebar.button("Predict!"):
     plt.style.use('dark_background')
     fig, ax = plt.subplots()
     ax.scatter(df['distance'],predictions1, c="lightblue")
+    ax.scatter(frame1,frame2, c='red')
     ax.set_xlabel('Distance (nm)')
     ax.set_ylabel('Density')
     ax.set_title('Nanoparticle distribution Prediction')
