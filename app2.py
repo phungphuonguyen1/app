@@ -161,7 +161,7 @@ if st.sidebar.button("Predict!"):
     ax.set_ylabel('Density')
     ax.legend()
     ax.set_xlim(min(df['distance']), max(df['distance']))
-    ax.set_title('Nanoparticle distribution Prediction')
+    #ax.set_title('Nanoparticle distribution Prediction')
 
     # Display the plot in Streamlit
     st.pyplot(fig)
