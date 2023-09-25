@@ -28,7 +28,7 @@ def user_input_features():
     ponp=st.sidebar.slider('Interaction between polymers and nanoparticles: ',0.0,2.5, 0.4)
     npnp=st.sidebar.slider('Interaction between nanoparticles and nanoparticles: ',0.0,2.5, 0.4)
     d=st.sidebar.slider('Diameter of nanoparticles: ',1,10,4)
-    phi=st.sidebar.slider('Number of particles: ',0.001,0.01,0.002)
+    phi=st.sidebar.slider('100*Phi: ',0.1,1,0.2)
     cLength=st.sidebar.slider('Length of polymer chain: ',5,60,10)
     st.sidebar.subheader('Distance Range')
     distance_str_min = st.sidebar.text_input('Minimum distance in nm: ','0.075')
@@ -38,7 +38,7 @@ def user_input_features():
     Po_NP=pd.DataFrame({'Po_NP':[ponp]*2000})
     NP_NP=pd.DataFrame({'NP_NP':[npnp]*2000})
     D_aim=pd.DataFrame({'D_aim':[d]*2000})
-    Phi=pd.DataFrame({'Phi':[phi]*2000})
+    Phi=pd.DataFrame({'Phi':[phi/100]*2000})
     Chain_length=pd.DataFrame({'Chain_length':[cLength]*2000})
     distance = pd.DataFrame({'distance': np.linspace(distance_min, distance_min + distance_range, 2000)})
     features=pd.concat([Po_NP,NP_NP,D_aim,Phi,Chain_length,distance], axis=1)
@@ -106,7 +106,7 @@ ls1="""<ul>
         <li>Interaction polymer-nanoparticle: amplitube</li>
         <li>Interaction nanoparticle-nanoparticle: amplitube</li>
         <li>Diameter of nanoparticle: size of nanoparticle (sperical, in nanometer)</li>
-        <li>Number of nanoparticle: represented by mass of nanoparticle per total volume</li>
+        <li>Phi: represented by mass of nanoparticle per total volume</li>
         <li>Length of polymer chain: in nanometer</li>
         <li>Distance: range should be small (less than length of polymer chain)</li>
     </ul>"""
