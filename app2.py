@@ -81,7 +81,7 @@ with st.sidebar:
         
         # Use HTML to create a div with background color, opacity, and rounded border
     info_box = """
-    <div style="background-color: white;text-align: center; padding: 10px;border-radius:10px">
+    <div style="background-color: #BCD5ED;text-align: center; padding: 10px;border-radius:10px">
         <p>Please enter inputs for the calculation.</p>
     </div>
     """
